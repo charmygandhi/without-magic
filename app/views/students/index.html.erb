@@ -1,9 +1,6 @@
 <h2>All Students</h2>
+	
+	<%= render partial: 'student', collection: @students %>
 
-<% @students.each do|student| %>
-	<div class = 'student'>
-		<p>
-			<strong>Name:</strong> <%= student.name%>
-		</p>
-	</div>
-<%end%>
+	<!-- This is the shorter form for above if you have followed the proper naming conventions--><%= render @students %>
+
