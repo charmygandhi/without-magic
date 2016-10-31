@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 	# routes
 	# HTTP verbs: get, post, put, patch, delete
 	# verb 'url/path'
-  get 'students/index'
+   #get 'students/index'
+
 
   # SHOW Routes
   get 'students'	=> 'students#index' #Student index (Show All Students)
@@ -10,4 +11,10 @@ Rails.application.routes.draw do
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  #Create routes
+  get 'students/new' => 'students#new', as: 'new_student'
+  post 'students' => 'students#create'
+
+    root to: 'students#index'
 end
