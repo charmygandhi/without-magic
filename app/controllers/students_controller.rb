@@ -42,6 +42,13 @@ class StudentsController < ApplicationController
    end
    #No view associated with this action we either redirrect or render
 
+   def destroy
+    @student = find_student
+    @student.destroy
+
+    redirect_to students_url #redirects to the students index page.
+   end
+
    private
 
     def student_params

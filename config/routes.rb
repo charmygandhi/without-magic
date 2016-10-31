@@ -20,5 +20,8 @@ Rails.application.routes.draw do
   get 'students/:id/edit' => 'students#edit', as: 'edit_student', id:/\d+/
   patch 'students/:id' => 'students#update'
 
+  #Delete route
+  delete 'students/:id' => 'students#destroy' #, as: 'destroy_student', id:/\d+/
+
     root to: 'students#index'
 end
