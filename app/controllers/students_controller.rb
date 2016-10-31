@@ -5,9 +5,8 @@ class StudentsController < ApplicationController
   end
   #Automatically load the app/view/students/index.html.erb	
 
- 
   def show
-  	@student = Student.find(params[:id]) #Load students mentioned by id in the route
+  	@student = find_student
   end
    #Automatically load the app/view/students/show.html.erb
 
@@ -27,7 +26,29 @@ class StudentsController < ApplicationController
    end
    #This action does not have an associate view
 
+   def edit
+    @student = find_student
+   end
+   #automatically loads the associated view app/views/students/edit.html.erb
+
+   def update
+    @student = find_student
+
+    if @student.update(student_params) #if validation pass
+      redirect_to @student #Redirect to the show action for this student
+    else
+      render :edit #render the edit view to show the form again and display validaiton
+    end
+   end
+   #No view associated with this action we either redirrect or render
+
+   private
+
     def student_params
       params.require(:student).permit(:name)
+    end
+
+    def find_student
+      @student = Student.find(params[:id]) #Load students mentioned by id in the route
     end
 end
